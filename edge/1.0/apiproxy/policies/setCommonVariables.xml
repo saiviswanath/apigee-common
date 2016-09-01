@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><AssignMessage name="setCommonVariables">
+<AssignMessage name="setCommonVariables">
 	<AssignVariable>
 		<Name>origin</Name>
 		<Ref>request.header.origin</Ref>

@@ -74,7 +74,7 @@ do
 done
 
 # find all matching policies
-foundPolicies="$( (echo "<ROOT>" ; cat $localPomDir/apiproxy/proxies/* $localPomDir/apiproxy/targets/* ; echo "</ROOT>") | sed 's/<\?.*\?>//' | xmllint --xpath "$policySearchString" - )"
+foundPolicies="$( (echo "<ROOT>" ; cat $localPomDir/apiproxy/proxies/* $localPomDir/apiproxy/targets/* ; echo "</ROOT>") | xmllint --xpath "$policySearchString" -)"
 
 for (( i = 0 ; i < ${#policyFileArray[@]} ; i++ ))
 do
@@ -91,8 +91,7 @@ do
 done
 
 # find all matching resources in policies
-foundResources=$( ( echo "<ROOT>" ; cat $localPomDir/apiproxy/policies/* ; echo "</ROOT>" ) | sed 's/<\?.*\?>//' | xmllint --xpath "$resourceSearchString" -  )
-
+foundResources=$( ( echo "<ROOT>" ; cat $localPomDir/apiproxy/policies/* ; echo "</ROOT>" ) | xmllint --xpath "$resourceSearchString" -  )
 #remove unused resources
 for (( i = 0 ; i < ${#resourceFileArray[@]} ; i++ ))
 do
